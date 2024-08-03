@@ -5,6 +5,8 @@ import br.com.luisrb.desafiovr.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ProdutoService {
 
@@ -13,5 +15,9 @@ public class ProdutoService {
 
     public Produto save(Produto produto) {
         return produtoRepository.save(produto);
+    }
+
+    public List<Produto> findAll() {
+        return produtoRepository.findAll();
     }
 }
