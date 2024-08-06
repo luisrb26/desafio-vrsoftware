@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
@@ -23,8 +23,7 @@ public class Pedido {
     private Cliente cliente;
 
     @Column(name = "data_pedido")
-    @Temporal(TemporalType.DATE)
-    private Date dataPedido;
+    private LocalDateTime dataPedido;
 
     private String situacao;
 }

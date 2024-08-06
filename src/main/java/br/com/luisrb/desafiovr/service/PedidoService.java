@@ -13,7 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -39,7 +40,7 @@ public class PedidoService {
 
         Pedido pedido = new Pedido();
         pedido.setCliente(cliente);
-        pedido.setDataPedido(new Date());
+        pedido.setDataPedido(LocalDateTime.now());
         pedido.setSituacao("ativo");
         pedidoRepository.save(pedido);
 
