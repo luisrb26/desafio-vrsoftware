@@ -42,4 +42,13 @@ public class PedidoController {
         }
     }
 
+
+    @GetMapping("/item-pedido")
+    public ResponseEntity<List<ItemPedido>> findAllItemPedidos() {
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(pedidoService.findAllItemPedidos());
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(null);
+        }
+    }
 }

@@ -4,6 +4,7 @@ import br.com.luisrb.desafiovr.entity.Cliente;
 import br.com.luisrb.desafiovr.entity.ItemPedido;
 import br.com.luisrb.desafiovr.entity.Pedido;
 import br.com.luisrb.desafiovr.entity.Produto;
+import br.com.luisrb.desafiovr.entity.dto.PedidoResponse;
 import br.com.luisrb.desafiovr.repository.ClienteRepository;
 import br.com.luisrb.desafiovr.repository.ItemPedidoRepository;
 import br.com.luisrb.desafiovr.repository.PedidoRepository;
@@ -88,4 +89,9 @@ public class PedidoService {
 
         return pedidosWithItems;
     }
+
+    public List<ItemPedido> findAllItemPedidos() {
+        return itemPedidoRepository.findAll();
+    }
+
 }
