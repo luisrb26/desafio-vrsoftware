@@ -30,7 +30,7 @@ public class ClienteController {
     public ResponseEntity<List<Cliente>> findAll() {
         try {
             return ResponseEntity.status(HttpStatus.OK).body(clienteService.findAll());
-        } catch (Exception e){
+        } catch (Exception e) {
             return ResponseEntity.badRequest().build();
         }
     }
