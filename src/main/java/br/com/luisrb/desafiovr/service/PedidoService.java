@@ -69,4 +69,23 @@ public class PedidoService {
         return pedido;
     }
 
+    public List<Pedido> findAll() {
+        return pedidoRepository.findAll();
+    }
+
+    public List<PedidoResponse> findAllPedidosWithItemsAndCliente() {
+        List<Pedido> pedidos = pedidoRepository.findAll();
+        List<PedidoResponse> pedidosWithItems = new ArrayList<>();
+
+        pedidos.forEach(pedido -> {
+            List<ItemPedido> itensDoPedido = itemPedidoRepository.findAllByPedidoId(pedido.getId());
+
+            itensDoPedido.forEach(item -> item.setPedido(null));
+
+            PedidoResponse pedidoWithItem = new PedidoResponse(pedido, itensDoPedido);
+            pedidosWithItems.add(pedidoWithItem);
+        });
+
+        return pedidosWithItems;
+    }
 }

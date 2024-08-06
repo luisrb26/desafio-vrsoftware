@@ -1,14 +1,16 @@
 package br.com.luisrb.desafiovr.controller;
 
+import br.com.luisrb.desafiovr.entity.ItemPedido;
 import br.com.luisrb.desafiovr.entity.Pedido;
 import br.com.luisrb.desafiovr.entity.dto.PedidoRequest;
+import br.com.luisrb.desafiovr.entity.dto.PedidoResponse;
 import br.com.luisrb.desafiovr.service.PedidoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/pedido")
@@ -30,4 +32,14 @@ public class PedidoController {
             return ResponseEntity.badRequest().body(null);
         }
     }
+
+    @GetMapping("/buscar-todos-com-itens")
+    public ResponseEntity<List<PedidoResponse>> buscarTodos() {
+        try {
+            return ResponseEntity.ok(pedidoService.findAllPedidosWithItemsAndCliente());
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(null);
+        }
+    }
+
 }
