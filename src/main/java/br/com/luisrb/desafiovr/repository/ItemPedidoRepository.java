@@ -15,9 +15,5 @@ public interface ItemPedidoRepository extends JpaRepository<ItemPedido, Long> {
             "WHERE ip.pedido.id = :idPedido")
     List<ItemPedido> findAllByPedidoId(Long idPedido);
 
-    @Query("SELECT ItemPedido " +
-            "FROM ItemPedido ip " +
-            "JOIN ip.produto p " +
-            "GROUP BY p.id, p.codigo, p.descricao")
-    List<ProdutoResumoDTO> findAllByPedidoId();
+    void deleteAllByPedidoId(Long pedidoId);
 }

@@ -94,4 +94,13 @@ public class PedidoService {
         return itemPedidoRepository.findAll();
     }
 
+    @Transactional
+    public void deletarPedido(Long pedidoId) throws Exception {
+        Pedido pedido = pedidoRepository.findById(pedidoId)
+                .orElseThrow(() -> new Exception("Pedido não encontrado"));
+
+        itemPedidoRepository.deleteAllByPedidoId(pedidoId);
+        pedidoRepository.delete(pedido);
+    }
+
 }
